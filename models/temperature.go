@@ -1,11 +1,13 @@
-package temperature
+package models
+
+import "fmt"
 
 type Unit int
 
 const (
-	F Unit = 0
-	C Unit = 1
-	K Unit = 2
+	F Unit = iota
+	C
+	K
 )
 
 type Temp struct {
@@ -27,6 +29,10 @@ func (t Temp) To(unit Unit) Temp {
 	return resTemp
 }
 
+func (t Temp) String() string {
+	unitToShow := []string{"F", "C", "K"}[t.Unit]
+	return fmt.Sprintf("%.1f%s", t.Val, unitToShow)
+}
 func cToK(c float64) float64 {
 	return c + 273.15
 }

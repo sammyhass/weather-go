@@ -36,7 +36,7 @@ func main() {
 		}
 		weather := models.NewWeather(data)
 
-		fmt.Printf("Weather: %s - %.1fF, %v\n", weather.Location.Name, weather.Info.TempF.Val, weather.Info.Desc)
+		fmt.Println(weather)
 
 	}
 }

@@ -1,6 +1,9 @@
 package models
 
-import "github.com/sammyhass/weather/helpers/temperature"
+import (
+	"fmt"
+	"time"
+)
 
 type Weather struct {
 	Location Location
@@ -8,8 +11,9 @@ type Weather struct {
 }
 
 type WeatherInfo struct {
-	TempF temperature.Temp
-	Desc string
+	Temp Temp
+	Desc  string
+	Time time.Time
 }
 
 type Location struct {
@@ -21,10 +25,11 @@ type Location struct {
 func NewWeather(response ApiResponse) *Weather {
 	w := new(Weather)
 	w.Info.Desc = response.Weather[0].Main
-	w.Info.TempF = temperature.Temp{
-		Val: response.Main.Temp,
-		Unit: temperature.K,
-	}.To(temperature.F)
+	w.Info.Time = time.Now()
+	w.Info.Temp = Temp{
+		Val:  response.Main.Temp,
+		Unit: K,
+	}.To(F)
 	
 	w.Location = Location{
 		Name: response.Name,
@@ -33,4 +38,10 @@ func NewWeather(response ApiResponse) *Weather {
 	}
 
 	return w
+}
+
+func (w Weather) String() string {
+	t := w.Info.Time
+	format := t.Format(time.Kitchen)
+	return fmt.Sprintf("%s %s : %v, %s", format, w.Location.Name, w.Info.Temp, w.Info.Desc)
 }
