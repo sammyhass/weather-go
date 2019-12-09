@@ -10,4 +10,4 @@ simple way to find out the weather on the command line
     export OPEN_WEATHER_API=[OPEN WEATHER MAP API KEY]
     export DEFAULT_CITY_WEATHER_API=Irvine
     ```
-1. Now just call 'weather'!
+1. Now run `weather` in your command line
