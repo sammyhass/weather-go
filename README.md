@@ -3,7 +3,7 @@ simple way to find out the weather on the command line
 
 ## Usage
 
-1. `go install github.com/sammyhass/weather`
+1. `go get -u github.com/sammyhass/weather`
 1. Set up your environment variables:
     ```shell script
     ## .zshrc / .bashrc / etc.
