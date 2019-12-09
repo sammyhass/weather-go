@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/sammyhass/weather/controllers"
+	"github.com/sammyhass/weather/models"
 	"log"
 	"os"
 )
@@ -33,10 +34,9 @@ func main() {
 		if err != nil {
 			log.Fatalln(err)
 		}
+		weather := models.NewWeather(data)
 
-		fmt.Printf("Weather - %s, %s\n", apiController.City, data.Sys.Country)
-
-		fmt.Printf("%.1f F and %s\n", data.Main.Temp * 9 /5 - 459.67, data.Weather[0].Main)
+		fmt.Printf("Weather: %s - %.1fF, %v\n", weather.Location.Name, weather.Info.TempF.Val, weather.Info.Desc)
 
 	}
 }

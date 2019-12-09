@@ -2,7 +2,7 @@ package models
 
 type ApiResponse struct {
 	Coord      Coord     `json:"coord"`
-	Weather    []Weather `json:"weather"`
+	Weather    []WeatherApi `json:"weather"`
 	Base       string    `json:"base"`
 	Main       Main      `json:"main"`
 	Visibility int       `json:"visibility"`
@@ -18,7 +18,7 @@ type Coord struct {
 	Lon float64 `json:"lon"`
 	Lat float64 `json:"lat"`
 }
-type Weather struct {
+type WeatherApi struct {
 	ID          int    `json:"id"`
 	Main        string `json:"main"`
 	Description string `json:"description"`
@@ -46,3 +46,4 @@ type Sys struct {
 	Sunrise int     `json:"sunrise"`
 	Sunset  int     `json:"sunset"`
 }
+
