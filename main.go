@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/sammyhass/weather/controllers"
-	"github.com/sammyhass/weather/models"
 	"log"
 	"os"
+
+	"github.com/sammyhass/weather/controllers"
+	"github.com/sammyhass/weather/models"
 )
 
 func main() {
@@ -15,8 +16,8 @@ func main() {
 		os.Exit(0)
 	}
 
-	apiController := controllers.ApiController{
-		ApiKey:key,
+	apiController := controllers.APIController{
+		APIKey: key,
 	}
 
 	if len(os.Args[1:]) < 1 {
